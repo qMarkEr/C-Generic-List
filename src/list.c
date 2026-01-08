@@ -60,7 +60,7 @@ void destroy(list* lst) {
     }
 }
 
-node* find(list* lst, int index) {  // [] operator
+void* get(list* lst, int index) {  // [] operator
     if (index < 0 || index >= lst->length) return NULL;
 
     if (index == 0) return lst->head;  // first element
@@ -84,7 +84,7 @@ node* find(list* lst, int index) {  // [] operator
             i++;
         }
     }
-    return cur;
+    return cur->content;
 }
 
 void delete (list* lst, int index) {
@@ -102,6 +102,7 @@ void delete (list* lst, int index) {
     if (index == lst->length - 1) {  // tail case
         node* temp_tail = lst->tail;
         lst->tail = temp_tail->prev;
+        lst->tail->next = NULL;
         free(temp_tail);
         lst->length--;
         return;

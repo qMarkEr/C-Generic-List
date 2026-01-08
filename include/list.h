@@ -14,12 +14,11 @@ typedef struct List {
     int length;
 } list;
 
-node* init (void* data);
 list* list_init();
 void add(list *lst, void* data);
 void list_print(list *lst, void (*prnt) (void*));
 void insert(list *lst, void* data, int index);
-node* find(list *lst, int index);
+void* get(list *lst, int index);
 void delete(list *lst, int index);
 void destroy(list *lst);
 

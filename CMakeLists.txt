@@ -1,7 +1,26 @@
-cmake_minimum_required(VERSION 3.22)
-project(ComputationalGeometry C)
+cmake_minimum_required(VERSION 3.10)
 
+project(list)
 
 set(CMAKE_C_STANDARD 11)
-add_executable(ComputationalGeometry main.c list.c structs.c qSort.c algorithms.c)
-target_link_libraries(ComputationalGeometry m)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+add_library(list STATIC
+    src/list.c
+)
+
+target_include_directories(list
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+install(TARGETS list
+    ARCHIVE DESTINATION lib
+)
+
+install(DIRECTORY include/
+    DESTINATION include
+)
+
+add_executable(main main.c)
+target_link_libraries(main PRIVATE list)
