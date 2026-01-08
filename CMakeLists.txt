@@ -21,6 +21,3 @@ install(TARGETS list
 install(DIRECTORY include/
     DESTINATION include
 )
-
-add_executable(main main.c)
-target_link_libraries(main PRIVATE list)
